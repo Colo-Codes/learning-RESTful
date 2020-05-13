@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%=blog.image%>" alt="">
+            <div class="content">
+                <p><%= blog.created.toDateString() %></p>
+            </div>
+            <div class="description">
+                <p><%- blog.body %></p> <!-- Changing the "=" for "-" will evaluate the code, wich will let users make use of HTML codeing in the body of the blog post. -->
+            </div>
+        </div>
+        <!-- Adding the "edit" button -->
+        <a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+        <!-- Adding the "delete" button -->
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" id="delete">
+            <button class="ui red basic button">Delete</button>
+        </form>
+    </div>
+    <a href="/blogs"><< Go back to post list</a>
+</div>
+
+<%- include("partials/footer") %>

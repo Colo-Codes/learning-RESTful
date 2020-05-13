@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New Blogpost</div>
+    <form class="ui form" action="/blogs" method="POST"> <!-- The form should point to /blogs, following the RESTful convention, but with POST action -->
+        <div class="field">
+            <label for="">Title</label>
+            <input type="text" name="blog[title]" placeholder="Title of the blogpost" required> <!-- What name="blog[title]" will do is, instead of making the value for title available directly from req.body.title it will put it inside of an object, like so: req.body.blog.title -->
+        </div>
+        <div class="field">
+            <label for="">Image</label>
+            <input type="text" name="blog[image]" placeholder="Link to image">
+        </div>
+        <div class="field">
+            <label for="">Content</label>
+            <textarea name="blog[body]" id="" cols="30" rows="10" placeholder="Write your content here" required></textarea>
+        </div>
+        <input class="ui basic big green button" type="submit">
+    </form>
+</div>
+
+<%- include("partials/footer") %>

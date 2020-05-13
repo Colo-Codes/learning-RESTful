@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Editing <%= blog.title %></div>
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST"> <!-- The form should point to the "update" route: /blogs/:id as a PUT request. As HTML forms don't support PUT request, we need to override that request by using "?_method=PUT" and a node package called "method-override'.-->
+        <div class="field">
+            <label for="">Title</label>
+            <input type="text" name="blog[title]" value="<%= blog.title %>" required> <!-- What name="blog[title]" will do is, instead of making the value for title available directly from req.body.title it will put it inside of an object, like so: req.body.blog.title -->
+        </div>
+        <div class="field">
+            <label for="">Image</label>
+            <input type="text" name="blog[image]" value="<%= blog.image %>">
+        </div>
+        <div class="field">
+            <label for="">Content</label>
+            <textarea name="blog[body]" id="" cols="30" rows="10" required><%= blog.body %></textarea>
+        </div>
+        <input class="ui basic big green button" type="submit">
+    </form>
+</div>
+
+<%- include("partials/footer") %>
